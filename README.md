@@ -1,13 +1,14 @@
-Name of feature: ________________________________
+Name of feature: deploy API Location IQ, deploy netlify.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 4 hours
 
-Start time: _____
+Start time: 2 pm
 
-Finish time: _____
+Finish time: 8 pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 6 hours
 
+Partner Name : Tamara Bassam
 # Project Name
 City Explorer
 
