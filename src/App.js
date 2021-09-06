@@ -21,6 +21,11 @@ export class App extends Component {
     const url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.locationName}&format=json`;
     const response = await axios.get(url);
 
+    //https/localhost-3001/namekey
+    
+    const wethearUrl = await `${process.env.REACT_APP_SERVER_URL}/get-wethear?city_name=${this.state.locationName}`;
+    console.log(wethearUrl);
+
     await this.setState({
       locationData: response.data[0]
     });
