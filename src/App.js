@@ -15,7 +15,7 @@ export class App extends Component {
       locationData: {},
       locationImgUrl: '',
       locationWeather: '',
-      locationWeatherDescription: ''
+      // locationWeatherDescription: ''
     }
   }
 
@@ -25,20 +25,23 @@ export class App extends Component {
 
     try {
       const url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.locationName}&format=json`;
-      const response = await axios.get(url);//locationIQ
+      const response = await axios.get(url);//locationIQ      
       const wethearUrl = await `${process.env.REACT_APP_SERVER_URL}/get-wethear?city_name=${this.state.locationName}`;
       const response2 = await axios.get(wethearUrl);//weather response
-
+      console.log('url', response2);
+      const centerKeyvalue = this.state.locationData.lat + "," + this.state.locationData.lon;
+      
       await this.setState({
         locationData: response.data[0],
         locationWeather: response2.data[0],
+        locationImgUrl: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${centerKeyvalue}&zoom="5"&format=json`,
       });
-      const locationWeatherDescription = response2.data[0].weather.description;
-      console.log(locationWeatherDescription);
-      const centerKeyvalue = this.state.locationData.lat + "," + this.state.locationData.lon;
-      this.setState({
-        locationImgUrl: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${centerKeyvalue}&zoom="5"&format=json`
-      })
+      
+
+      // console.log('imgurl', this.state.locationImgUrl);
+      
+      // const locationWeatherDescription = response2.data[0].weather.description;
+      // console.log(locationWeatherDescription);
     } catch (error) {
       this.setState({
         error: true,
@@ -73,7 +76,7 @@ export class App extends Component {
                 <p>location name : {this.state.locationWeather.city_name}</p>
                 <p>lat : {this.state.locationWeather.lat}</p>
                 <p>long : {this.state.locationWeather.lon}</p>
-                <p>description: : {this.locationWeatherDescription}</p>
+
                 <p>country_code: : {this.state.locationWeather.country_code}</p>
                 <p>state_code: : {this.state.locationWeather.state_code}</p>
               </Card.Text>
