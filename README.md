@@ -9,6 +9,8 @@ Finish time: 8 pm
 Actual time needed to complete: 6 hours
 
 Partner Name : Tamara Bassam
+
+#### Got help with deploying APIs and fixing errors from **Farouk Ibrahim**
 # Project Name
 City Explorer
 
